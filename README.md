@@ -6,9 +6,9 @@ The script uses an HTTP request to attempt to claim the rewards from your honeyp
 In order for the script to claim the honeypot for your account, you need to find your Bearer authentication token and paste it into a file called "token.txt" in the folder of the script (it's important that it is called exactly like that and it is in the same folder as the script)
 
 ## How to run the script
-### Method 1:
+### Method 1
 Download the "AutomaticHoneypot.exe" file and run it.
-### Method 2:
+### Method 2
 1. Install Python
 2. Run the command "python main.py" in the same directory as the script
 
@@ -20,6 +20,6 @@ Expand "Local Storage" on the left and click on the first item. The token is loc
 
 ![Screenshot](tutorial_chrome.png)
 
-### Firefox:
+### Firefox
 Log into HoneyGain. Press F12 to open up the Firefox devtools and navigate to the "Storage" tab. The next steps are the same as for Chrome.
 ![Screenshot](tutorial.png)

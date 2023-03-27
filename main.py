@@ -7,12 +7,12 @@ DELAY: int = 5 * 3600 # 5 hours
 URL: str = "https://dashboard.honeygain.com/api/v1/contest_winnings"
 
 def get_headers(token: str) -> dict:
-    return {
+    headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/111.0",
         "Accept": "application/json, text/plain, */*",
         "Accept-Language": "en-US,en;q=0.5",
         "Accept-Encoding": "gzip, deflate, br",
-        "Authorization": f"Bearer {token}",
+        "Authorization": "Bearer {}".format(token),
         "Origin": "https://dashboard.honeygain.com",
         "Connection": "keep-alive",
         "Referer": "https://dashboard.honeygain.com/",
@@ -22,13 +22,14 @@ def get_headers(token: str) -> dict:
         "Content-Length": "0",
         "TE": "trailers"
     }
+    return headers
 
 def get_token(path: str) -> str:
     with open(path, "r", encoding="utf-8") as f:
         return f.read().strip()
 
 def claim_honeypot(url: str, headers: str) -> int:
-    response: requests.Response = requests.post(url, headers=headers)
+    response: requests.Response = requests.post(url, data="", headers=headers)
     if response.status_code != 200:
         print(response.text)
         return 0

@@ -1,5 +1,6 @@
 import requests
 import time
+import platform
 import os
 
 DELAY: int = 5 * 3600 # 5 hours
@@ -47,10 +48,8 @@ def main():
     HEADERS: dict = get_headers(TOKEN)
     while True:
         total_credits_received += claim_honeypot(URL, HEADERS)
-        try:
+        if "linux" not in platform.system().lower():
             os.system(f"title Claimed so far: {total_credits_received} credits (${total_credits_received / 1000:.2f})")
-        except Exception:
-            print("Couldn't update console title because you are not running Windows")
         time.sleep(DELAY)
 
 if __name__ == "__main__":

@@ -25,7 +25,7 @@ def get_headers(token: str) -> dict:
 
 def get_token(path: str) -> str:
     with open(path, "r", encoding="utf-8") as f:
-        return f.read()
+        return f.read().strip()
 
 def claim_honeypot(url: str, headers: str) -> int:
     response: requests.Response = requests.post(url, headers=headers)
@@ -46,7 +46,10 @@ def main():
     HEADERS: dict = get_headers(TOKEN)
     while True:
         total_credits_received += claim_honeypot(URL, HEADERS)
-        os.system(f"title Claimed so far: {total_credits_received} credits (${total_credits_received / 1000:.2f})")
+        try:
+            os.system(f"title Claimed so far: {total_credits_received} credits (${total_credits_received / 1000:.2f})")
+        except Exception:
+            print("Couldn't update console title because you are not running Windows")
         time.sleep(DELAY)
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-# AutomaticHoneyPot
+# AutomaticHoneypot
 A script that automatically claims the rewards from the honeypot in HoneyGain
 
 The script uses an HTTP request to attempt to claim the rewards from your honeypot in HoneyGain every 5 hours (so that it doesn't matter if it's not synced).
